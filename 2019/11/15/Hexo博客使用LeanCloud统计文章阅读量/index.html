@@ -75,15 +75,15 @@
 
 
 
-<meta name="description" content="配置 LeanCloud创建账号进入官网 https:&#x2F;&#x2F;leancloud.cn&#x2F;，进入右侧控制台并注册账号、验证邮箱 创建应用控制台 -&amp;gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改">
+<meta name="description" content="配置 LeanCloud创建账号进入官网 https:&#x2F;&#x2F;leancloud.cn&#x2F;，进入右侧控制台并注册账号、验证邮箱 创建应用控制台 -&amp;gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改 创建 Class点击刚创建的 website 应用，创建一个 Class 表用来保存博客访问数据  此处创建的 Class 名字必须为 Counter，用来保证与 NexT 主题的修改相兼容">
 <meta name="keywords" content="博客搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客使用LeanCloud统计文章阅读量">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;15&#x2F;Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8LeanCloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F&#x2F;index.html">
 <meta property="og:site_name" content="柏明轩的博客">
-<meta property="og:description" content="配置 LeanCloud创建账号进入官网 https:&#x2F;&#x2F;leancloud.cn&#x2F;，进入右侧控制台并注册账号、验证邮箱 创建应用控制台 -&amp;gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改">
+<meta property="og:description" content="配置 LeanCloud创建账号进入官网 https:&#x2F;&#x2F;leancloud.cn&#x2F;，进入右侧控制台并注册账号、验证邮箱 创建应用控制台 -&amp;gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改 创建 Class点击刚创建的 website 应用，创建一个 Class 表用来保存博客访问数据  此处创建的 Class 名字必须为 Counter，用来保证与 NexT 主题的修改相兼容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-10T03:25:32.349Z">
+<meta property="og:updated_time" content="2019-12-10T08:11:15.210Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -359,6 +359,19 @@
       
         <h2 id="配置-LeanCloud"><a href="#配置-LeanCloud" class="headerlink" title="配置 LeanCloud"></a>配置 LeanCloud</h2><h3 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h3><p>进入官网 <code>https://leancloud.cn/</code>，进入右侧控制台并注册账号、验证邮箱</p>
 <h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><p>控制台 -&gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改</p>
+<h3 id="创建-Class"><a href="#创建-Class" class="headerlink" title="创建 Class"></a>创建 Class</h3><p>点击刚创建的 website 应用，创建一个 Class 表用来保存博客访问数据</p>
+<ul>
+<li>此处创建的 Class 名字必须为 <code>Counter</code>，用来保证与 NexT 主题的修改相兼容</li>
+<li>ACL 权限选择 <code>read所有用户</code>，避免后续因为权限的问题导致次数统计显示不正常</li>
+</ul>
+<a id="more"></a> 
+
+<h3 id="设置网络安全"><a href="#设置网络安全" class="headerlink" title="设置网络安全"></a>设置网络安全</h3><p>由于app-id和app-key是完全暴露的，所以防止他人使用，我们可以在应用设置里面面设置Web安全域名，只有添加的域名才能使用该应用，防止有人Hack我们的数据库。点击设置-&gt;安全中心-&gt;Web域名安全-&gt;添加Blog域名-&gt;点击保存</p>
+<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><p>在LeanCloud中点击设置-&gt;应用Keys-&gt;复制App-ID和App-Key</p>
+<p>打开 NexT 主题的 <code>_config.yml</code> 文件，把刚才复制的 App-ID 和 App-Key 和填入下面相应位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">leancloud_visitors:</span><br><span class="line">  enable: true</span><br><span class="line">  app_id: # 你的app-id</span><br><span class="line">  app_key: # 你的app-key</span><br></pre></td></tr></table></figure>
+
+<p>然后使用命令<code>hexo g</code>重新生成，<code>hexo d</code>部署到Github</p>
 
       
     </div>
@@ -398,6 +411,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" rel="prev" title="GitHub Pages博客绑定域名">
+                GitHub Pages博客绑定域名 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,7 +495,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -500,7 +517,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -549,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-LeanCloud"><span class="nav-number">1.</span> <span class="nav-text">配置 LeanCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建账号"><span class="nav-number">1.1.</span> <span class="nav-text">创建账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用"><span class="nav-number">1.2.</span> <span class="nav-text">创建应用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-LeanCloud"><span class="nav-number">1.</span> <span class="nav-text">配置 LeanCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建账号"><span class="nav-number">1.1.</span> <span class="nav-text">创建账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用"><span class="nav-number">1.2.</span> <span class="nav-text">创建应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Class"><span class="nav-number">1.3.</span> <span class="nav-text">创建 Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网络安全"><span class="nav-number">1.4.</span> <span class="nav-text">设置网络安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置博客"><span class="nav-number">2.</span> <span class="nav-text">配置博客</span></a></li></ol></div>
             
 
           </div>
