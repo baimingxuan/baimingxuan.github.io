@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -85,7 +92,7 @@
 <meta property="og:site_name" content="柏明轩的博客">
 <meta property="og:description" content="编写文章命令方式1hexo new test  此时会在source&#x2F;_posts目录下生成test.md文件，输入些许内容，然后保存. 直接方式在 source&#x2F;_posts&#x2F;下新建一个.md文件也可 为文章贴标签配置确认 确认站点配置文件有  1tag_dir: tags   确认主题配置文件有  1tags: tags">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-07T05:49:59.477Z">
+<meta property="og:updated_time" content="2019-12-19T10:45:36.388Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -450,8 +457,26 @@
 <p>其文件头部类似：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 新建文件名</span><br><span class="line">date: 2019-11-15 10:54:26</span><br><span class="line">categories: </span><br><span class="line">	- 分类名</span><br></pre></td></tr></table></figure>
 
+<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><h3 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h3><p>当Hexo项目中只用到少量图片时，可以将图片统一放在<code>source/images</code>文件夹中，通过markdown语法访问它们。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](/images/image.jpg)</span><br></pre></td></tr></table></figure>
+
+<p>图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
+<h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过配置<code>_config.yml</code>来生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<p>将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为true后，执行命令<code>$ hexo new post_name</code>，在<code>source/_posts</code>中会生成文章<code>post_name.md</code>和同名文件夹<code>post_name</code>。将图片资源放在<code>post_name</code>中，文章就可以使用相对路径引用图片资源了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](image.jpg)</span><br></pre></td></tr></table></figure>
+
+<p><strong>上述是markdown的引用方式，图片只能在文章中显示，但无法在首页中正常显示。</strong></p>
+<p>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image.jpg This is an image %&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="附加Tip"><a href="#附加Tip" class="headerlink" title="附加Tip"></a>附加Tip</h2><p>若文章内容过长，可在<code>xx.md</code>中添加代码隐藏剩余内容，如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -646,6 +671,20 @@
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://es6.ruanyifeng.com/" title="ECMAScript6入门" target="_blank">ECMAScript6入门</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
 
@@ -662,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写文章"><span class="nav-number">1.</span> <span class="nav-text">编写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令方式"><span class="nav-number">1.1.</span> <span class="nav-text">命令方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接方式"><span class="nav-number">1.2.</span> <span class="nav-text">直接方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为文章贴标签"><span class="nav-number">2.</span> <span class="nav-text">为文章贴标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置确认"><span class="nav-number">2.1.</span> <span class="nav-text">配置确认</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建tags页面"><span class="nav-number">2.2.</span> <span class="nav-text">新建tags页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改source-tags-index-md"><span class="nav-number">2.3.</span> <span class="nav-text">修改source/tags/index.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为新建文章打标签"><span class="nav-number">2.4.</span> <span class="nav-text">为新建文章打标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为文章分类"><span class="nav-number">3.</span> <span class="nav-text">为文章分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置确认-1"><span class="nav-number">3.1.</span> <span class="nav-text">配置确认</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建categories文件"><span class="nav-number">3.2.</span> <span class="nav-text">新建categories文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改categories-index-md"><span class="nav-number">3.3.</span> <span class="nav-text">修改categories/index.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为新建文章分类"><span class="nav-number">3.4.</span> <span class="nav-text">为新建文章分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加Tip"><span class="nav-number">4.</span> <span class="nav-text">附加Tip</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写文章"><span class="nav-number">1.</span> <span class="nav-text">编写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令方式"><span class="nav-number">1.1.</span> <span class="nav-text">命令方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接方式"><span class="nav-number">1.2.</span> <span class="nav-text">直接方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为文章贴标签"><span class="nav-number">2.</span> <span class="nav-text">为文章贴标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置确认"><span class="nav-number">2.1.</span> <span class="nav-text">配置确认</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建tags页面"><span class="nav-number">2.2.</span> <span class="nav-text">新建tags页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改source-tags-index-md"><span class="nav-number">2.3.</span> <span class="nav-text">修改source/tags/index.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为新建文章打标签"><span class="nav-number">2.4.</span> <span class="nav-text">为新建文章打标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为文章分类"><span class="nav-number">3.</span> <span class="nav-text">为文章分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置确认-1"><span class="nav-number">3.1.</span> <span class="nav-text">配置确认</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建categories文件"><span class="nav-number">3.2.</span> <span class="nav-text">新建categories文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改categories-index-md"><span class="nav-number">3.3.</span> <span class="nav-text">修改categories/index.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为新建文章分类"><span class="nav-number">3.4.</span> <span class="nav-text">为新建文章分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章中插入图片"><span class="nav-number">4.</span> <span class="nav-text">文章中插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对路径"><span class="nav-number">4.1.</span> <span class="nav-text">绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对路径"><span class="nav-number">4.2.</span> <span class="nav-text">相对路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加Tip"><span class="nav-number">5.</span> <span class="nav-text">附加Tip</span></a></li></ol></div>
             
 
           </div>
@@ -682,10 +721,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">柏明轩</span>
 
@@ -700,12 +738,12 @@
 
 
 
-<div class="powered-by">
-  <i class="fa fa-user-md"></i>
-  <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  </span>
-</div>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i> <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+
         
 
 

@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -95,7 +102,13 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;08.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;09.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;10.png">
-<meta property="og:updated_time" content="2019-12-19T06:31:49.122Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;14.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;16.png">
+<meta property="og:updated_time" content="2019-12-20T02:57:07.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;Hexo-NexT%E9%85%8D%E7%BD%AE%E8%B6%85%E7%82%AB%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C&#x2F;01.png">
 
@@ -471,7 +484,33 @@
 <p><img src="09.png" alt=""></p>
 <p>效果如下图所示：</p>
 <p><img src="10.png" alt=""></p>
+<h2 id="添加网页顶部进度加载条"><a href="#添加网页顶部进度加载条" class="headerlink" title="添加网页顶部进度加载条"></a>添加网页顶部进度加载条</h2><p>编辑主题配置文件，搜索<code>pace</code>，将其值改为<code>ture</code>就可以了，选择一款你喜欢的样式，如图：</p>
+<p><img src="11.png" alt=""></p>
+<h2 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2><p>修改<code>Blog/themes/next/source/css/_common/components/post/post.styl</code>，在末尾添加CSS样式：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文章内链接文本样式</span></span><br><span class="line">.post-body p a&#123;</span><br><span class="line">  color: #0593d3; <span class="comment">//原始链接颜色</span></span><br><span class="line">  border-bottom: <span class="keyword">none</span>;</span><br><span class="line">  border-bottom: 1px solid #0593d3; <span class="comment">//底部分割线颜色</span></span><br><span class="line">  &amp;:hover &#123;</span><br><span class="line">    color: #fc6423; <span class="comment">//鼠标经过颜色</span></span><br><span class="line">    border-bottom: <span class="keyword">none</span>;</span><br><span class="line">    border-bottom: 1px solid #fc6423; <span class="comment">//底部分割线颜色</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>设置后，效果如下：</p>
+<p><img src="12.png" alt=""></p>
+<h2 id="设置网站的图标Favicon"><a href="#设置网站的图标Favicon" class="headerlink" title="设置网站的图标Favicon"></a>设置网站的图标Favicon</h2><p>在图标网站（<a href="https://www.easyicon.net/" target="_blank" rel="noopener">easyicon</a>或者<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴矢量图标库</a>）找一张你喜欢的图标（大：32x32 小：16x16）并下载下来，将下载好的小图和中图命名成默认图标的名字，并放在<code>Blog/themes/next/source/images</code>中替换掉。</p>
+<p>如果你自定义了图片名字，需要修改主题配置文件，如下图：</p>
+<p><img src="13.png" alt=""></p>
+<h2 id="底部隐藏由Hexo强力驱动、主题"><a href="#底部隐藏由Hexo强力驱动、主题" class="headerlink" title="底部隐藏由Hexo强力驱动、主题"></a>底部隐藏由Hexo强力驱动、主题</h2><p>打开主题配置文件<code>_config.yml</code>，搜索<code>footer</code>，将相关配置设置为<code>false</code>，如下图：</p>
+<p><img src="14.png" alt=""></p>
+<h2 id="添加侧栏推荐阅读"><a href="#添加侧栏推荐阅读" class="headerlink" title="添加侧栏推荐阅读"></a>添加侧栏推荐阅读</h2><p>编辑主题配置文件，如下配置即可：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Blog rolls</span></span><br><span class="line">links_icon: link</span><br><span class="line">links_title: 推荐阅读</span><br><span class="line"><span class="meta">#links_layout: block</span></span><br><span class="line">links_layout: <span class="keyword">inline</span></span><br><span class="line">links:</span><br><span class="line"> ECMAScript6入门: http:<span class="comment">//es6.ruanyifeng.com/</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下图所示：</p>
+<p><img src="15.png" alt=""></p>
+<h2 id="网站底部加上访问量"><a href="#网站底部加上访问量" class="headerlink" title="网站底部加上访问量"></a>网站底部加上访问量</h2><p>打开主题配置文件<code>_config.yml</code>，搜索<code>footer</code>，加入一个配置counter，并设置为<code>true</code>,如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  counter: true</span><br></pre></td></tr></table></figure>
+
+<p>修改``Blog/theme/next/layout/_partials/footer.swig`，在末尾添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.footer.counter %&#125;</span><br><span class="line">    &lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;i class=&quot;fa fa-user-md&quot;&gt;&lt;/i&gt; &lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;		&lt;/span&gt;次&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">    &lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;总访客&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下图：</p>
+<p><img src="16.png" alt=""></p>
+<p>```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````</p>
+<h3 id="参考文章：Hexo-NexT配置超炫网页效果"><a href="#参考文章：Hexo-NexT配置超炫网页效果" class="headerlink" title="参考文章：Hexo-NexT配置超炫网页效果"></a>参考文章：<a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">Hexo-NexT配置超炫网页效果</a></h3>
       
     </div>
     
@@ -662,6 +701,20 @@
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://es6.ruanyifeng.com/" title="ECMAScript6入门" target="_blank">ECMAScript6入门</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
 
@@ -678,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加添加RSS"><span class="nav-number">1.</span> <span class="nav-text">添加添加RSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右上角添加GitHub挂件"><span class="nav-number">2.</span> <span class="nav-text">右上角添加GitHub挂件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改底部标签样式"><span class="nav-number">3.</span> <span class="nav-text">修改底部标签样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在文章末尾添加“文章结束”标记"><span class="nav-number">4.</span> <span class="nav-text">在文章末尾添加“文章结束”标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏社交小图标设置"><span class="nav-number">5.</span> <span class="nav-text">侧边栏社交小图标设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo博客添加站内搜索（Local-Search）"><span class="nav-number">6.</span> <span class="nav-text">Hexo博客添加站内搜索（Local Search）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加添加RSS"><span class="nav-number">1.</span> <span class="nav-text">添加添加RSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右上角添加GitHub挂件"><span class="nav-number">2.</span> <span class="nav-text">右上角添加GitHub挂件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改底部标签样式"><span class="nav-number">3.</span> <span class="nav-text">修改底部标签样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在文章末尾添加“文章结束”标记"><span class="nav-number">4.</span> <span class="nav-text">在文章末尾添加“文章结束”标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏社交小图标设置"><span class="nav-number">5.</span> <span class="nav-text">侧边栏社交小图标设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo博客添加站内搜索（Local-Search）"><span class="nav-number">6.</span> <span class="nav-text">Hexo博客添加站内搜索（Local Search）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加网页顶部进度加载条"><span class="nav-number">7.</span> <span class="nav-text">添加网页顶部进度加载条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章内链接文本样式"><span class="nav-number">8.</span> <span class="nav-text">修改文章内链接文本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置网站的图标Favicon"><span class="nav-number">9.</span> <span class="nav-text">设置网站的图标Favicon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#底部隐藏由Hexo强力驱动、主题"><span class="nav-number">10.</span> <span class="nav-text">底部隐藏由Hexo强力驱动、主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加侧栏推荐阅读"><span class="nav-number">11.</span> <span class="nav-text">添加侧栏推荐阅读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网站底部加上访问量"><span class="nav-number">12.</span> <span class="nav-text">网站底部加上访问量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章：Hexo-NexT配置超炫网页效果"><span class="nav-number">12.1.</span> <span class="nav-text">参考文章：Hexo-NexT配置超炫网页效果</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -698,10 +751,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">柏明轩</span>
 
@@ -716,12 +768,12 @@
 
 
 
-<div class="powered-by">
-  <i class="fa fa-user-md"></i>
-  <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  </span>
-</div>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i> <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+
         
 
 
