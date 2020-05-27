@@ -84,15 +84,15 @@
 
 
 
-<meta name="description" content="具体步骤如下1.  Install mavon-editor (安装)1npm install mavon-editor --save  2.  Use (如何引入) 全局注册  main.js 123456789101112&#x2F;&#x2F; 全局注册   import Vue from &amp;apos;vue&amp;apos;   import mavonEditor from &amp;apos;mavon-editor&amp;">
+<meta name="description" content="具体步骤如下1.  Install mavon-editor (安装)1npm install mavon-editor --save  2.  Use (如何引入) 全局注册  main.js 123456789101112&#x2F;&#x2F; 全局注册   import Vue from &amp;apos;vue&amp;apos;   import mavonEditor from &amp;apos;mavon-editor&amp;apos;   import &amp;apos;mavo">
 <meta name="keywords" content="Vue,vue-admin-system文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue使用Markdown编辑器mavonEditor">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;13&#x2F;Vue%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8mavonEditor&#x2F;index.html">
 <meta property="og:site_name" content="柏明轩的博客">
-<meta property="og:description" content="具体步骤如下1.  Install mavon-editor (安装)1npm install mavon-editor --save  2.  Use (如何引入) 全局注册  main.js 123456789101112&#x2F;&#x2F; 全局注册   import Vue from &amp;apos;vue&amp;apos;   import mavonEditor from &amp;apos;mavon-editor&amp;">
+<meta property="og:description" content="具体步骤如下1.  Install mavon-editor (安装)1npm install mavon-editor --save  2.  Use (如何引入) 全局注册  main.js 123456789101112&#x2F;&#x2F; 全局注册   import Vue from &amp;apos;vue&amp;apos;   import mavonEditor from &amp;apos;mavon-editor&amp;apos;   import &amp;apos;mavo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-14T08:24:26.904Z">
+<meta property="og:updated_time" content="2020-05-26T12:58:26.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -425,12 +425,12 @@
 <li>全局注册</li>
 </ul>
 <p><code>main.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 全局注册</span><br><span class="line">   import Vue from &apos;vue&apos;</span><br><span class="line">   import mavonEditor from &apos;mavon-editor&apos;</span><br><span class="line">   import &apos;mavon-editor/dist/css/index.css&apos;</span><br><span class="line">   // use</span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   new Vue(&#123;</span><br><span class="line">       &apos;el&apos;: &apos;#main&apos;,</span><br><span class="line">       data() &#123;</span><br><span class="line">           return &#123; value: &apos;&apos; &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局注册</span></span><br><span class="line">   <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">   <span class="keyword">import</span> mavonEditor <span class="keyword">from</span> <span class="string">'mavon-editor'</span></span><br><span class="line">   <span class="keyword">import</span> <span class="string">'mavon-editor/dist/css/index.css'</span></span><br><span class="line">   <span class="comment">// use</span></span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">       <span class="string">'el'</span>: <span class="string">'#main'</span>,</span><br><span class="line">       data() &#123;</span><br><span class="line">           <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="string">''</span> &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a> 
 
 <p><code>index.html</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;main&quot;&gt;</span><br><span class="line">    &lt;mavon-editor v-model=&quot;value&quot;/&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mavon-editor</span> <span class="attr">v-model</span>=<span class="string">"value"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>组件内注册</li>
@@ -578,7 +578,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -589,7 +589,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -600,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

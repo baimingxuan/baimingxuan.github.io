@@ -1,6 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue利用Drag实现列表的拖拽排序</title>
+    <url>/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h2 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h2><h4 id="draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动"><a href="#draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动" class="headerlink" title="draggable：true，表示元素可以被拖动;  false，表示元素不可以被拖动"></a><strong>draggable：</strong>true，表示元素可以被拖动;  false，表示元素不可以被拖动</h4><h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>Event</strong></th>
+<th align="center"><strong>On Event Handler</strong></th>
+<th align="center"><strong>Fires when…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">drag</td>
+<td align="center">ondrag</td>
+<td align="center">当拖动元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">dragend</td>
+<td align="center">ondragend</td>
+<td align="center">当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键)</td>
+</tr>
+<tr>
+<td align="center">dragenter</td>
+<td align="center">ondragenter</td>
+<td align="center">当拖动元素或选中的文本到一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragexit</td>
+<td align="center">ondragexit</td>
+<td align="center">当元素变得不再是拖动操作的选中目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragleave</td>
+<td align="center">ondragleave</td>
+<td align="center">当拖动元素或选中的文本离开一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragover</td>
+<td align="center">ondragover</td>
+<td align="center">当元素或选中的文本被拖到一个可释放目标上时触发（每100毫秒触发一次）</td>
+</tr>
+<tr>
+<td align="center">dragstart</td>
+<td align="center">ondragstart</td>
+<td align="center">当用户开始拖动一个元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">drop</td>
+<td align="center">ondrop</td>
+<td align="center">当元素或选中的文本在可释放目标上被释放时触发</td>
+</tr>
+</tbody></table>
+ <a id="more"></a>
+
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>1、设置 div 元素属性 <code>draggable=&quot;true&quot;</code> 实现可拖拽</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、设置元素被拖拽时的各阶段事件，进行列表位置交换</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot; draggable=&quot;true&quot; @dragstart=&quot;handleDragStart(index)&quot;</span><br><span class="line">          @dragenter=&quot;handleDragEnter($event, index)&quot; @dragend=&quot;handleDragEnd&quot;&gt;</span><br><span class="line">        &#123;&#123;item.name&#125;&#125;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data () &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                list: [],</span><br><span class="line">                dragFrom: -1,</span><br><span class="line">                dragTo: -1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            handleDragStart (index) &#123;</span><br><span class="line">              this.dragFrom = index</span><br><span class="line">            &#125;,</span><br><span class="line">            handleDragEnter (event, index) &#123;</span><br><span class="line">              event.dataTransfer.effectAllowed = &apos;move&apos;</span><br><span class="line">              this.dragTo = index</span><br><span class="line">            &#125;,</span><br><span class="line">            handleDragEnd () &#123;</span><br><span class="line">              const newEle = this.list</span><br><span class="line">              newEle.splice(this.dragTo, 0, ...newEle.splice(this.dragFrom, 1))</span><br><span class="line">              this.dragFrom = -1</span><br><span class="line">              this.dragTo = -1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>HTML5</category>
+      </categories>
+      <tags>
+        <tag>HTML5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue利用HTML5拖放（Drag and Drop）功能实现数据（或资源）传递</title>
+    <url>/2020/05/18/Vue%E5%88%A9%E7%94%A8HTML5%E6%8B%96%E6%94%BE%EF%BC%88Drag%20and%20Drop%EF%BC%89%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%88%96%E8%B5%84%E6%BA%90%EF%BC%89%E4%BC%A0%E9%80%92/</url>
+    <content><![CDATA[<h2 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h2><h4 id="draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动"><a href="#draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动" class="headerlink" title="draggable：true，表示元素可以被拖动;  false，表示元素不可以被拖动"></a><strong>draggable：</strong>true，表示元素可以被拖动;  false，表示元素不可以被拖动</h4><h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>Event</strong></th>
+<th align="center"><strong>On Event Handler</strong></th>
+<th align="center"><strong>Fires when…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">drag</td>
+<td align="center">ondrag</td>
+<td align="center">当拖动元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">dragend</td>
+<td align="center">ondragend</td>
+<td align="center">当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键)</td>
+</tr>
+<tr>
+<td align="center">dragenter</td>
+<td align="center">ondragenter</td>
+<td align="center">当拖动元素或选中的文本到一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragexit</td>
+<td align="center">ondragexit</td>
+<td align="center">当元素变得不再是拖动操作的选中目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragleave</td>
+<td align="center">ondragleave</td>
+<td align="center">当拖动元素或选中的文本离开一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragover</td>
+<td align="center">ondragover</td>
+<td align="center">当元素或选中的文本被拖到一个可释放目标上时触发（每100毫秒触发一次）</td>
+</tr>
+<tr>
+<td align="center">dragstart</td>
+<td align="center">ondragstart</td>
+<td align="center">当用户开始拖动一个元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">drop</td>
+<td align="center">ondrop</td>
+<td align="center">当元素或选中的文本在可释放目标上被释放时触发</td>
+</tr>
+</tbody></table>
+ <a id="more"></a>
+
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>1、设置 div 元素属性 <code>draggable=&quot;true&quot;</code> 实现可拖拽</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、通过 div 元素拖拽开始 <code>dragstart</code> 事件，将数据存储（通过 <code>dataTransfer.setData(format, data)</code> 实现）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot; draggable=&quot;true&quot; @dragstart=&quot;dragstart($event, item)&quot; @dragend=&quot;dragend&quot;&gt;</span><br><span class="line">    	&#123;&#123;item.name&#125;&#125;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    methods: &#123;</span><br><span class="line">        dragstart (event, data) &#123;</span><br><span class="line">  			let resData = JSON.stringify(data)</span><br><span class="line">			event.dataTransfer.setData(&apos;text&apos;, resData)</span><br><span class="line">		&#125;,</span><br><span class="line">        dragend (event) &#123;</span><br><span class="line">          event.dataTransfer.clearData()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>  <em>因为传递的数据 data 是个对象（Object），而 <code>dataTransfer.setData(format, data)</code> 中的第二个参数 data 接受的是个字符串（String），所以需要将其进行转换；而它的第一个参数 format 是设置传递数据的格式，设置成 text 格式，是为了兼容IE10及以上版本，否则在IE中会报错；接受数据同理</em></p>
+<p>3、通过 div 元素在释放区的 <code>drop</code> 事件，获取存储的数据（通过 <code>dataTransfer.getData(format)</code> 实现）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div @drop=&quot;dropEle&quot; @dragover.prevent&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    dropEle (event) &#123;</span><br><span class="line">      let data = event.dataTransfer.getData(&apos;text&apos;)</span><br><span class="line">      let resData = JSON.parse(data)</span><br><span class="line">      console.log(resData)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>  <em>必须给拖放区元素添加 dragover.prevent，才能使 drop 事件正确执行</em></p>
+]]></content>
+      <categories>
+        <category>HTML5</category>
+      </categories>
+      <tags>
+        <tag>HTML5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacOS安装npm全局包的权限问题</title>
+    <url>/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h2><h4 id="MacOS，安装npm全局包提示没有写入权限，提示如下："><a href="#MacOS，安装npm全局包提示没有写入权限，提示如下：" class="headerlink" title="MacOS，安装npm全局包提示没有写入权限，提示如下："></a>MacOS，安装npm全局包提示没有写入权限，提示如下：</h4><p><code>npm WARN checkPermissions Missing write access to /usr/local/lib/node_modules</code></p>
+<h4 id="如图："><a href="#如图：" class="headerlink" title="如图："></a>如图：</h4><p><img src="01.png" alt=""></p>
+<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a><strong>解决方法：</strong></h2><p><strong>修改npm包所安装目录的权限，代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown -R $USER /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>注意：<strong><em>$USER</em></strong> 为Mac用户名，sudo操作需要输入用户密码</p>
+<p><strong>查看目录是否已切换权限，代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls -l /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>完毕，即可进行npm全局包安装</p>
+ <a id="more"></a>]]></content>
+      <categories>
+        <category>Nodejs</category>
+        <category>Npm包管理</category>
+      </categories>
+      <tags>
+        <tag>Nodejs</tag>
+        <tag>Npm包管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue使用数字滚动插件vue-countTo</title>
+    <url>/2020/05/16/Vue%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6vue-countTo/</url>
+    <content><![CDATA[<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p><strong>vue-countTo是一个无依赖，轻量级的vue数字滚动插件，基于countUp.js</strong></p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-Install-vue-countTo-安装"><a href="#1-Install-vue-countTo-安装" class="headerlink" title="1.  Install  vue-countTo (安装)"></a>1.  Install  vue-countTo (安装)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install vue-count-to</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-组件内使用代码"><a href="#2-组件内使用代码" class="headerlink" title="2.  组件内使用代码"></a>2.  组件内使用代码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;countTo :startVal=&apos;startVal&apos; :endVal=&apos;endVal&apos; :duration=&apos;3000&apos;&gt;&lt;/countTo&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  import countTo from &apos;vue-count-to&apos;;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        startVal: 0,</span><br><span class="line">        endVal: 2020</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123; countTo &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a> 
+
+<h3 id="3-属性及方法配置"><a href="#3-属性及方法配置" class="headerlink" title="3.  属性及方法配置"></a>3.  属性及方法配置</h3><ul>
+<li>属性：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Property</strong></th>
+<th align="center"><strong>Description</strong></th>
+<th align="center"><strong>type</strong></th>
+<th align="center"><strong>default</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">startVal</td>
+<td align="center">开始值</td>
+<td align="center">Number</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">endVal</td>
+<td align="center">结束值</td>
+<td align="center">Number</td>
+<td align="center">2017</td>
+</tr>
+<tr>
+<td align="center">duration</td>
+<td align="center">持续时间，以毫秒为单位</td>
+<td align="center">Number</td>
+<td align="center">3000</td>
+</tr>
+<tr>
+<td align="center">autoplay</td>
+<td align="center">自动播放</td>
+<td align="center">Boolean</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">decimals</td>
+<td align="center">要显示的小数位数</td>
+<td align="center">Number</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">decimal</td>
+<td align="center">十进制分割</td>
+<td align="center">String</td>
+<td align="center">.</td>
+</tr>
+<tr>
+<td align="center">separator</td>
+<td align="center">分隔符</td>
+<td align="center">String</td>
+<td align="center">,</td>
+</tr>
+<tr>
+<td align="center">prefix</td>
+<td align="center">前缀</td>
+<td align="center">String</td>
+<td align="center">‘’</td>
+</tr>
+<tr>
+<td align="center">suffix</td>
+<td align="center">后缀</td>
+<td align="center">String</td>
+<td align="center">‘’</td>
+</tr>
+<tr>
+<td align="center">useEasing</td>
+<td align="center">使用缓动</td>
+<td align="center">Boolean</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">easingFn</td>
+<td align="center">缓动回调方法</td>
+<td align="center">Function</td>
+<td align="center">—</td>
+</tr>
+</tbody></table>
+<ul>
+<li>方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Function Name</strong></th>
+<th align="center"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">mountedCallback</td>
+<td align="center">挂载成功后回调</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">开始计数时调用</td>
+</tr>
+<tr>
+<td align="center">pause</td>
+<td align="center">暂停计数时调用</td>
+</tr>
+<tr>
+<td align="center">reset</td>
+<td align="center">重置countTo</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Vue</category>
+        <category>vue-admin-system文档</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>vue-admin-system文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Vue封装wangEditor组件</title>
     <url>/2020/05/14/%E4%BD%BF%E7%94%A8Vue%E5%B0%81%E8%A3%85wangEditor%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<h2 id="具体步骤如下"><a href="#具体步骤如下" class="headerlink" title="具体步骤如下"></a>具体步骤如下</h2><h3 id="1-Install-wang-editor-安装"><a href="#1-Install-wang-editor-安装" class="headerlink" title="1. Install  wang-editor (安装)"></a>1. Install  wang-editor (安装)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install wangeditor</span><br></pre></td></tr></table></figure>
@@ -43,12 +333,12 @@
 <li>全局注册</li>
 </ul>
 <p><code>main.js</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 全局注册</span><br><span class="line">   import Vue from &apos;vue&apos;</span><br><span class="line">   import mavonEditor from &apos;mavon-editor&apos;</span><br><span class="line">   import &apos;mavon-editor/dist/css/index.css&apos;</span><br><span class="line">   // use</span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   new Vue(&#123;</span><br><span class="line">       &apos;el&apos;: &apos;#main&apos;,</span><br><span class="line">       data() &#123;</span><br><span class="line">           return &#123; value: &apos;&apos; &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 全局注册</span></span><br><span class="line">   <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">   <span class="keyword">import</span> mavonEditor <span class="keyword">from</span> <span class="string">'mavon-editor'</span></span><br><span class="line">   <span class="keyword">import</span> <span class="string">'mavon-editor/dist/css/index.css'</span></span><br><span class="line">   <span class="comment">// use</span></span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">       <span class="string">'el'</span>: <span class="string">'#main'</span>,</span><br><span class="line">       data() &#123;</span><br><span class="line">           <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="string">''</span> &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a> 
 
 <p><code>index.html</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;main&quot;&gt;</span><br><span class="line">    &lt;mavon-editor v-model=&quot;value&quot;/&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mavon-editor</span> <span class="attr">v-model</span>=<span class="string">"value"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>组件内注册</li>

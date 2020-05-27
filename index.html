@@ -307,6 +307,780 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柏明轩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柏明轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/" itemprop="url">Vue利用Drag实现列表的拖拽排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T15:33:47+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/" class="leancloud_visitors" data-flag-title="Vue利用Drag实现列表的拖拽排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h2><h4 id="draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动"><a href="#draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动" class="headerlink" title="draggable：true，表示元素可以被拖动;  false，表示元素不可以被拖动"></a><strong>draggable：</strong>true，表示元素可以被拖动;  false，表示元素不可以被拖动</h4><h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>Event</strong></th>
+<th align="center"><strong>On Event Handler</strong></th>
+<th align="center"><strong>Fires when…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">drag</td>
+<td align="center">ondrag</td>
+<td align="center">当拖动元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">dragend</td>
+<td align="center">ondragend</td>
+<td align="center">当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键)</td>
+</tr>
+<tr>
+<td align="center">dragenter</td>
+<td align="center">ondragenter</td>
+<td align="center">当拖动元素或选中的文本到一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragexit</td>
+<td align="center">ondragexit</td>
+<td align="center">当元素变得不再是拖动操作的选中目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragleave</td>
+<td align="center">ondragleave</td>
+<td align="center">当拖动元素或选中的文本离开一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragover</td>
+<td align="center">ondragover</td>
+<td align="center">当元素或选中的文本被拖到一个可释放目标上时触发（每100毫秒触发一次）</td>
+</tr>
+<tr>
+<td align="center">dragstart</td>
+<td align="center">ondragstart</td>
+<td align="center">当用户开始拖动一个元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">drop</td>
+<td align="center">ondrop</td>
+<td align="center">当元素或选中的文本在可释放目标上被释放时触发</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/18/Vue%E5%88%A9%E7%94%A8HTML5%E6%8B%96%E6%94%BE%EF%BC%88Drag%20and%20Drop%EF%BC%89%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%88%96%E8%B5%84%E6%BA%90%EF%BC%89%E4%BC%A0%E9%80%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柏明轩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柏明轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/18/Vue%E5%88%A9%E7%94%A8HTML5%E6%8B%96%E6%94%BE%EF%BC%88Drag%20and%20Drop%EF%BC%89%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%88%96%E8%B5%84%E6%BA%90%EF%BC%89%E4%BC%A0%E9%80%92/" itemprop="url">Vue利用HTML5拖放（Drag and Drop）功能实现数据（或资源）传递</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-18T17:39:49+08:00">
+                2020-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/18/Vue%E5%88%A9%E7%94%A8HTML5%E6%8B%96%E6%94%BE%EF%BC%88Drag%20and%20Drop%EF%BC%89%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%88%96%E8%B5%84%E6%BA%90%EF%BC%89%E4%BC%A0%E9%80%92/" class="leancloud_visitors" data-flag-title="Vue利用HTML5拖放（Drag and Drop）功能实现数据（或资源）传递">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h2><h4 id="draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动"><a href="#draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动" class="headerlink" title="draggable：true，表示元素可以被拖动;  false，表示元素不可以被拖动"></a><strong>draggable：</strong>true，表示元素可以被拖动;  false，表示元素不可以被拖动</h4><h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>Event</strong></th>
+<th align="center"><strong>On Event Handler</strong></th>
+<th align="center"><strong>Fires when…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">drag</td>
+<td align="center">ondrag</td>
+<td align="center">当拖动元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">dragend</td>
+<td align="center">ondragend</td>
+<td align="center">当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键)</td>
+</tr>
+<tr>
+<td align="center">dragenter</td>
+<td align="center">ondragenter</td>
+<td align="center">当拖动元素或选中的文本到一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragexit</td>
+<td align="center">ondragexit</td>
+<td align="center">当元素变得不再是拖动操作的选中目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragleave</td>
+<td align="center">ondragleave</td>
+<td align="center">当拖动元素或选中的文本离开一个可释放目标时触发</td>
+</tr>
+<tr>
+<td align="center">dragover</td>
+<td align="center">ondragover</td>
+<td align="center">当元素或选中的文本被拖到一个可释放目标上时触发（每100毫秒触发一次）</td>
+</tr>
+<tr>
+<td align="center">dragstart</td>
+<td align="center">ondragstart</td>
+<td align="center">当用户开始拖动一个元素或选中的文本时触发</td>
+</tr>
+<tr>
+<td align="center">drop</td>
+<td align="center">ondrop</td>
+<td align="center">当元素或选中的文本在可释放目标上被释放时触发</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/18/Vue%E5%88%A9%E7%94%A8HTML5%E6%8B%96%E6%94%BE%EF%BC%88Drag%20and%20Drop%EF%BC%89%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%88%96%E8%B5%84%E6%BA%90%EF%BC%89%E4%BC%A0%E9%80%92/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柏明轩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柏明轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" itemprop="url">MacOS安装npm全局包的权限问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T21:41:16+08:00">
+                2020-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">Nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nodejs/Npm%E5%8C%85%E7%AE%A1%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">Npm包管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="MacOS安装npm全局包的权限问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h2><h4 id="MacOS，安装npm全局包提示没有写入权限，提示如下："><a href="#MacOS，安装npm全局包提示没有写入权限，提示如下：" class="headerlink" title="MacOS，安装npm全局包提示没有写入权限，提示如下："></a>MacOS，安装npm全局包提示没有写入权限，提示如下：</h4><p><code>npm WARN checkPermissions Missing write access to /usr/local/lib/node_modules</code></p>
+<h4 id="如图："><a href="#如图：" class="headerlink" title="如图："></a>如图：</h4><p><img src="01.png" alt=""></p>
+<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a><strong>解决方法：</strong></h2><p><strong>修改npm包所安装目录的权限，代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $USER /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>注意：<strong><em>$USER</em></strong> 为Mac用户名，sudo操作需要输入用户密码</p>
+<p><strong>查看目录是否已切换权限，代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls -l /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>完毕，即可进行npm全局包安装</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/Vue%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6vue-countTo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柏明轩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柏明轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/16/Vue%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6vue-countTo/" itemprop="url">Vue使用数字滚动插件vue-countTo</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T16:46:06+08:00">
+                2020-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/vue-admin-system%E6%96%87%E6%A1%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-admin-system文档</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/16/Vue%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6vue-countTo/" class="leancloud_visitors" data-flag-title="Vue使用数字滚动插件vue-countTo">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p><strong>vue-countTo是一个无依赖，轻量级的vue数字滚动插件，基于countUp.js</strong></p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-Install-vue-countTo-安装"><a href="#1-Install-vue-countTo-安装" class="headerlink" title="1.  Install  vue-countTo (安装)"></a>1.  Install  vue-countTo (安装)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-count-to</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-组件内使用代码"><a href="#2-组件内使用代码" class="headerlink" title="2.  组件内使用代码"></a>2.  组件内使用代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;countTo :startVal=&apos;startVal&apos; :endVal=&apos;endVal&apos; :duration=&apos;3000&apos;&gt;&lt;/countTo&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  import countTo from &apos;vue-count-to&apos;;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        startVal: 0,</span><br><span class="line">        endVal: 2020</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123; countTo &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/16/Vue%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6vue-countTo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/%E4%BD%BF%E7%94%A8Vue%E5%B0%81%E8%A3%85wangEditor%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -603,7 +1377,7 @@
 <li>全局注册</li>
 </ul>
 <p><code>main.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 全局注册</span><br><span class="line">   import Vue from &apos;vue&apos;</span><br><span class="line">   import mavonEditor from &apos;mavon-editor&apos;</span><br><span class="line">   import &apos;mavon-editor/dist/css/index.css&apos;</span><br><span class="line">   // use</span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   new Vue(&#123;</span><br><span class="line">       &apos;el&apos;: &apos;#main&apos;,</span><br><span class="line">       data() &#123;</span><br><span class="line">           return &#123; value: &apos;&apos; &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局注册</span></span><br><span class="line">   <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">   <span class="keyword">import</span> mavonEditor <span class="keyword">from</span> <span class="string">'mavon-editor'</span></span><br><span class="line">   <span class="keyword">import</span> <span class="string">'mavon-editor/dist/css/index.css'</span></span><br><span class="line">   <span class="comment">// use</span></span><br><span class="line">   Vue.use(mavonEditor)</span><br><span class="line">   <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">       <span class="string">'el'</span>: <span class="string">'#main'</span>,</span><br><span class="line">       data() &#123;</span><br><span class="line">           <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="string">''</span> &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/13/Vue%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8mavonEditor/#more" rel="contents">
@@ -1345,684 +2119,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="柏明轩">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="柏明轩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/16/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" itemprop="url">GitHub Pages博客绑定域名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T16:08:22+08:00">
-                2019-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/11/16/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" class="leancloud_visitors" data-flag-title="GitHub Pages博客绑定域名">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="域名准备"><a href="#域名准备" class="headerlink" title="域名准备"></a>域名准备</h2><p>在腾讯云（或者阿里云）购买域名，并且实名认证</p>
-<h2 id="创建-CNAME"><a href="#创建-CNAME" class="headerlink" title="创建 CNAME"></a>创建 CNAME</h2><h3 id="在博客目录中创建（推荐）"><a href="#在博客目录中创建（推荐）" class="headerlink" title="在博客目录中创建（推荐）"></a>在博客目录中创建（推荐）</h3><p>在博客目录中source文件夹中，直接新建txt文件,内容写你的域名，不要加上 http、https、www</p>
-<p>将txt文件命名为CNAME（必须大写），并且去掉后缀名（不需要后缀名）</p>
-<p>然后使用命令<code>hexo g</code>重新生成，<code>hexo d</code>部署到Github，在GitHub项目库中看到CNAME文件，则成功</p>
-<h3 id="在GitHub项目库中直接创建（不推荐，每次部署都会被覆盖）"><a href="#在GitHub项目库中直接创建（不推荐，每次部署都会被覆盖）" class="headerlink" title="在GitHub项目库中直接创建（不推荐，每次部署都会被覆盖）"></a>在GitHub项目库中直接创建（不推荐，每次部署都会被覆盖）</h3><p>在项目库中点击<code>Create new file</code>按钮，新建文件，命名为CNAME（必须大写），内容写你的域名，不要加上 http、https、www</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/16/Hexo%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8LeanCloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="柏明轩">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="柏明轩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/15/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8LeanCloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F/" itemprop="url">Hexo博客使用LeanCloud统计文章阅读量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T20:08:03+08:00">
-                2019-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/11/15/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8LeanCloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F/" class="leancloud_visitors" data-flag-title="Hexo博客使用LeanCloud统计文章阅读量">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="配置-LeanCloud"><a href="#配置-LeanCloud" class="headerlink" title="配置 LeanCloud"></a>配置 LeanCloud</h2><h3 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h3><p>进入官网 <code>https://leancloud.cn/</code>，进入右侧控制台并注册账号、验证邮箱</p>
-<h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><p>控制台 -&gt; 创建应用（开发版），应用名称可以随意输入，后面还可以修改，如图：</p>
-<p><img src="01.png" alt=""></p>
-<p><img src="02.png" alt=""></p>
-<h3 id="创建-Class"><a href="#创建-Class" class="headerlink" title="创建 Class"></a>创建 Class</h3><p>点击刚创建的 website 应用，点击存储，创建一个 Class 表用来保存博客访问数据</p>
-<ul>
-<li>此处创建的 Class 名字必须为 <code>Counter</code>，用来保证与 NexT 主题的修改相兼容</li>
-<li>ACL 权限选择 <code>read所有用户</code>，避免后续因为权限的问题导致次数统计显示不正常</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/15/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8LeanCloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/Hexo%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="柏明轩">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="柏明轩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/15/Hexo%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0/" itemprop="url">Hexo编写文章</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T10:54:23+08:00">
-                2019-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/11/15/Hexo%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0/" class="leancloud_visitors" data-flag-title="Hexo编写文章">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="编写文章"><a href="#编写文章" class="headerlink" title="编写文章"></a>编写文章</h2><h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new test</span><br></pre></td></tr></table></figure>
-
-<p>此时会在<code>source/_posts</code>目录下生成<code>test.md</code>文件，输入些许内容，然后保存.</p>
-<h3 id="直接方式"><a href="#直接方式" class="headerlink" title="直接方式"></a>直接方式</h3><p>在 <strong>source/_posts/</strong>下新建一个<code>.md</code>文件也可</p>
-<h2 id="为文章贴标签"><a href="#为文章贴标签" class="headerlink" title="为文章贴标签"></a>为文章贴标签</h2><h3 id="配置确认"><a href="#配置确认" class="headerlink" title="配置确认"></a>配置确认</h3><ul>
-<li>确认站点配置文件有</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag_dir: tags</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>确认主题配置文件有</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: tags</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/15/Hexo%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98%EF%BC%88Next%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="柏明轩">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="柏明轩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/14/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98%EF%BC%88Next%EF%BC%89/" itemprop="url">Hexo更换主题（Next）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T13:55:49+08:00">
-                2019-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/11/14/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98%EF%BC%88Next%EF%BC%89/" class="leancloud_visitors" data-flag-title="Hexo更换主题（Next）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="安装Next"><a href="#安装Next" class="headerlink" title="安装Next"></a>安装Next</h2><h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h3 id="应用下载的主题"><a href="#应用下载的主题" class="headerlink" title="应用下载的主题"></a>应用下载的主题</h3><p>在网站配置文件<strong>_config.yml</strong>中，配置<strong>theme</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><h3 id="选择-Scheme"><a href="#选择-Scheme" class="headerlink" title="选择 Scheme"></a>选择 Scheme</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/14/Hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98%EF%BC%88Next%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
   </nav>
 
 
@@ -2072,7 +2173,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2083,7 +2184,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2094,7 +2195,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
