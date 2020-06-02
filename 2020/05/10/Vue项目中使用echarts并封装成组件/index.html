@@ -71,7 +71,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Vue,vue-admin-system文档," />
 
 
 
@@ -84,15 +84,18 @@
 
 
 
-<meta name="description" content="前端攻城狮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;about&#x2F;index.html">
+<meta name="description" content="简单介绍echarts是非常强大的数据可视化插件，经常用来进行图表展示，本文介绍将echarts进行vue组件化封装并使用 基础配置 标题 titletext（String）: 标题名 left（Number）: 水平位置 top（Number）: 垂直位置 textStyle（Object）: 标题样式">
+<meta name="keywords" content="Vue,vue-admin-system文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue项目中使用echarts并封装成组件">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;10&#x2F;Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8echarts%E5%B9%B6%E5%B0%81%E8%A3%85%E6%88%90%E7%BB%84%E4%BB%B6&#x2F;index.html">
 <meta property="og:site_name" content="柏明轩的博客">
-<meta property="og:description" content="前端攻城狮">
+<meta property="og:description" content="简单介绍echarts是非常强大的数据可视化插件，经常用来进行图表展示，本文介绍将echarts进行vue组件化封装并使用 基础配置 标题 titletext（String）: 标题名 left（Number）: 水平位置 top（Number）: 垂直位置 textStyle（Object）: 标题样式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-14T07:23:04.000Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;10&#x2F;Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8echarts%E5%B9%B6%E5%B0%81%E8%A3%85%E6%88%90%E7%BB%84%E4%BB%B6&#x2F;01.png">
+<meta property="og:updated_time" content="2020-06-02T06:57:28.550Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;10&#x2F;Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8echarts%E5%B9%B6%E5%B0%81%E8%A3%85%E6%88%90%E7%BB%84%E4%BB%B6&#x2F;01.png">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/10/Vue项目中使用echarts并封装成组件/"/>
 
 
 
 
 
-  <title>about | 柏明轩的博客</title>
+  <title>Vue项目中使用echarts并封装成组件 | 柏明轩的博客</title>
   
 
 
@@ -295,33 +298,231 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8echarts%E5%B9%B6%E5%B0%81%E8%A3%85%E6%88%90%E7%BB%84%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柏明轩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柏明轩的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">Vue项目中使用echarts并封装成组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-10T10:52:03+08:00">
+                2020-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/vue-admin-system%E6%96%87%E6%A1%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-admin-system文档</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/10/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8echarts%E5%B9%B6%E5%B0%81%E8%A3%85%E6%88%90%E7%BB%84%E4%BB%B6/" class="leancloud_visitors" data-flag-title="Vue项目中使用echarts并封装成组件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p><strong>echarts是非常强大的数据可视化插件，经常用来进行图表展示，本文介绍将echarts进行vue组件化封装并使用</strong></p>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li><h4 id="标题-title"><a href="#标题-title" class="headerlink" title="标题 title"></a>标题 title</h4><p>text（String）: 标题名</p>
+<p>left（Number）: 水平位置</p>
+<p>top（Number）: 垂直位置</p>
+<p>textStyle（Object）: 标题样式</p>
+</li>
+</ul>
+<a id="more"></a> 
+
+<ul>
+<li><h4 id="提示工具-tooltip"><a href="#提示工具-tooltip" class="headerlink" title="提示工具 tooltip"></a>提示工具 tooltip</h4><p>trigger（String） : ‘item’ 数据项触发，’axis’ 坐标轴触发</p>
+<p>formatter : 提示的格式</p>
+</li>
+<li><h4 id="系列列表-series"><a href="#系列列表-series" class="headerlink" title="系列列表 series"></a>系列列表 series</h4><p>type（String）: 图标类型</p>
+<p>name（String）: 名称</p>
+<p>center（Array）: 图标渲染位置坐标</p>
+<p>data（Array）: 数据数组</p>
+<p>itemStyle（Object）: 每项的样式</p>
+</li>
+</ul>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-Install-echarts-安装"><a href="#1-Install-echarts-安装" class="headerlink" title="1.  Install  echarts (安装)"></a>1.  Install  echarts (安装)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts -S</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-组件封装-（饼图为例）"><a href="#2-组件封装-（饼图为例）" class="headerlink" title="2.  组件封装 （饼图为例）"></a>2.  组件封装 （饼图为例）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div ref=&quot;dom&quot; class=&quot;charts-pie&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import echarts from &apos;echarts&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;ChartsPie&apos;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      dom: null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      default: &apos;&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      type: Array,</span><br><span class="line">      default: () =&gt; []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    this.drawing()</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy () &#123;</span><br><span class="line">    window.removeEventListener(&apos;resize&apos;, this.resize)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    resize () &#123;</span><br><span class="line">      this.dom.resize()</span><br><span class="line">    &#125;,</span><br><span class="line">    drawing () &#123;</span><br><span class="line">      let legendData = this.data.map(item =&gt; item.name)</span><br><span class="line">      let options = &#123;</span><br><span class="line">        // 标题</span><br><span class="line">        title: &#123;</span><br><span class="line">          text: this.title,</span><br><span class="line">          left: &apos;center&apos;,</span><br><span class="line">          top: 15,</span><br><span class="line">          textStyle: &#123;</span><br><span class="line">            fontSize: 16,</span><br><span class="line">            fontWeight: &apos;normal&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 工具提示</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: &apos;item&apos;,</span><br><span class="line">          formatter: &apos;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 图例说明</span><br><span class="line">        legend: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          orient: &apos;vertical&apos;,</span><br><span class="line">          left: 10,</span><br><span class="line">          top: 20,</span><br><span class="line">          itemWidth: 25,</span><br><span class="line">          itemHeight: 15,</span><br><span class="line">          itemGap: 5,</span><br><span class="line">          data: legendData,</span><br><span class="line">          textStyle: &#123;</span><br><span class="line">            color: &apos;#aaa&apos;,</span><br><span class="line">            fontSize: 12</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 颜色配置</span><br><span class="line">        color: [&apos;#2d8cf0&apos;, &apos;#19be6b&apos;, &apos;#ff9900&apos;, &apos;#e46cbb&apos;, &apos;#9a66e4&apos;],</span><br><span class="line">        // 类型配置</span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                label: &#123;</span><br><span class="line">                  show: true,</span><br><span class="line">                  fontSize: 14,</span><br><span class="line">                  formatter: &apos;&#123;c&#125; (&#123;d&#125;%)&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                labelLine: &#123;</span><br><span class="line">                  show: true</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            name: &apos;访问来源&apos;,</span><br><span class="line">            // 类型配置</span><br><span class="line">            type: &apos;pie&apos;,</span><br><span class="line">            radius: &apos;70%&apos;,</span><br><span class="line">            center: [&apos;52%&apos;, &apos;55%&apos;],</span><br><span class="line">            // 数据配置</span><br><span class="line">            data: this.data</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">      this.dom = echarts.init(this.$refs.dom)</span><br><span class="line">      this.dom.setOption(options)</span><br><span class="line">      window.addEventListener(&apos;resize&apos;, this.resize)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-组件使用"><a href="#3-组件使用" class="headerlink" title="3.  组件使用"></a>3.  组件使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;ChartsPie :title=text :data=&quot;chartsPieData&quot;/&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ChartsPie from &apos;../components/Charts/ChartsPie&apos;</span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      text: &apos;用户访问来源&apos;,</span><br><span class="line">      chartsPieData: [</span><br><span class="line">        &#123; value: 1920, name: &apos;直接访问&apos; &#125;,</span><br><span class="line">        &#123; value: 1169, name: &apos;邮件营销&apos; &#125;,</span><br><span class="line">        &#123; value: 986, name: &apos;联盟广告&apos; &#125;,</span><br><span class="line">        &#123; value: 621, name: &apos;视频广告&apos; &#125;,</span><br><span class="line">        &#123; value: 3256, name: &apos;搜索引擎&apos; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-效果展示"><a href="#4-效果展示" class="headerlink" title="4.  效果展示"></a>4.  效果展示</h3><p><img src="01.png" alt=""></p>
+
       
     </div>
     
     
     
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"><i class="fa fa-tag"></i> Vue</a>
+          
+            <a href="/tags/vue-admin-system%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> vue-admin-system文档</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/18/Vue+ElementUI%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9icon%E5%9B%BE%E6%A0%87/" rel="next" title="Vue+ElementUI使用第三方icon图标（FontClass引用法+SVG引用法）">
+                <i class="fa fa-chevron-left"></i> Vue+ElementUI使用第三方icon图标（FontClass引用法+SVG引用法）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/13/Vue%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8mavonEditor/" rel="prev" title="Vue使用Markdown编辑器mavonEditor">
+                Vue使用Markdown编辑器mavonEditor <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -354,8 +555,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -456,6 +666,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单介绍"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础配置"><span class="nav-number">2.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题-title"><span class="nav-number">2.0.1.</span> <span class="nav-text">标题 title</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提示工具-tooltip"><span class="nav-number">2.0.2.</span> <span class="nav-text">提示工具 tooltip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系列列表-series"><span class="nav-number">2.0.3.</span> <span class="nav-text">系列列表 series</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用步骤"><span class="nav-number">3.</span> <span class="nav-text">使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Install-echarts-安装"><span class="nav-number">3.1.</span> <span class="nav-text">1.  Install  echarts (安装)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组件封装-（饼图为例）"><span class="nav-number">3.2.</span> <span class="nav-text">2.  组件封装 （饼图为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-组件使用"><span class="nav-number">3.3.</span> <span class="nav-text">3.  组件使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-效果展示"><span class="nav-number">3.4.</span> <span class="nav-text">4.  效果展示</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
