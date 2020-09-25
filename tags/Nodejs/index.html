@@ -87,7 +87,7 @@
 <meta name="description" content="前端攻城狮">
 <meta property="og:type" content="website">
 <meta property="og:title" content="柏明轩的博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;Nodejs&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;NodeJs&#x2F;index.html">
 <meta property="og:site_name" content="柏明轩的博客">
 <meta property="og:description" content="前端攻城狮">
 <meta property="og:locale" content="zh-Hans">
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Nodejs/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/NodeJs/"/>
 
 
 
 
 
-  <title>标签: Nodejs | 柏明轩的博客</title>
+  <title>标签: NodeJs | 柏明轩的博客</title>
   
 
 
@@ -299,7 +299,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Nodejs<small>标签</small>
+        <h1>NodeJs<small>标签</small>
         </h1>
       </div>
 
@@ -311,37 +311,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2020/05/16/MacOS%E5%AE%89%E8%A3%85npm%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" itemprop="url">
+            <a class="post-title-link" href="/2020/09/15/%E4%BD%BF%E7%94%A8pm2%E9%83%A8%E7%BD%B2node%E9%A1%B9%E7%9B%AE/" itemprop="url">
               
-                <span itemprop="name">MacOS安装npm全局包的权限问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-16T21:41:16+08:00"
-              content="2020-05-16" >
-          05-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/11/18/MAC%E5%8D%87%E7%BA%A7Nodejs%E5%92%8CNpm%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88/" itemprop="url">
-              
-                <span itemprop="name">MAC升级Nodejs和Npm到最新版</span>
+                <span itemprop="name">使用pm2部署node项目</span>
               
             </a>
         
@@ -349,9 +321,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-18T11:10:39+08:00"
-              content="2019-11-18" >
-          11-18
+              datetime="2020-09-15T17:20:33+08:00"
+              content="2020-09-15" >
+          09-15
         </time>
       </div>
 
@@ -415,7 +387,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -426,7 +398,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -437,7 +409,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1094,6 +1066,53 @@
         },
         error: function(error) {
           console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+ + error.message);
         }
       });
     }

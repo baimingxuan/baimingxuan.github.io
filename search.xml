@@ -1,6 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用pm2部署node项目</title>
+    <url>/2020/09/15/%E4%BD%BF%E7%94%A8pm2%E9%83%A8%E7%BD%B2node%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h2 id="1、pm2简介"><a href="#1、pm2简介" class="headerlink" title="1、pm2简介"></a>1、pm2简介</h2><p>pm2（process manager）是一个进程管理工具，维护一个进程列表，可以用它来管理你的node进程，负责所有正在运行的进程，并查看node进程的状态，也支持性能监控，负载均衡等功能。</p>
+<h3 id="1-1、使用pm2管理的node程序的好处"><a href="#1-1、使用pm2管理的node程序的好处" class="headerlink" title="1.1、使用pm2管理的node程序的好处"></a>1.1、使用pm2管理的node程序的好处</h3><ol>
+<li><p>监听文件变化，自动重启程序</p>
+</li>
+<li><p>支持性能监控</p>
+</li>
+<li><p>负载均衡</p>
+</li>
+<li><p>程序崩溃自动重启</p>
+</li>
+<li><p>服务器重新启动时自动重新启动</p>
+<a id="more"></a> 
+
+
+
+</li>
+</ol>
+<h2 id="2、pm2安装与使用"><a href="#2、pm2安装与使用" class="headerlink" title="2、pm2安装与使用"></a>2、pm2安装与使用</h2><h3 id="2-1、全局安装"><a href="#2-1、全局安装" class="headerlink" title="2.1、全局安装"></a>2.1、全局安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、常用命令"><a href="#2-2、常用命令" class="headerlink" title="2.2、常用命令"></a>2.2、常用命令</h3><ul>
+<li>启动一个node程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 start app.js</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动进程并指定应用的程序名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 start app.js --name application</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加进程监视</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 在文件改变的时候会重新启动程序</span><br><span class="line">pm2 start app.js --name start --watch</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>列出所有进程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 list</span><br><span class="line">pm2 ls // 简写</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从进程列表中删除进程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// pm2 delete [appname] | id</span><br><span class="line">pm2 delete app  // 指定进程名删除</span><br><span class="line">pm2 delete 0    // 指定进程id删除</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除进程列表中所有进程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 delete all</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看某个进程具体情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 describe app</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看进程的资源消耗情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 monit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启进程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    pm2 restart app // 重启指定名称的进程</span><br><span class="line">    pm2 restart all // 重启所有进程</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看进程日志</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 logs app    // 查看该名称进程的日志</span><br><span class="line">pm2 logs all    // 查看所有进程的日志</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置pm2开机自启</li>
+</ul>
+<p>开启启动设置，此处是CentOS系统，其他系统替换最后一个选项（可选项：ubuntu, centos 等）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 startup centos</span><br></pre></td></tr></table></figure>
+
+<p>然后按照提示需要输入的命令进行输入</p>
+<ul>
+<li>最后保存设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pm2 save</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>NodeJS</category>
+      </categories>
+      <tags>
+        <tag>NodeJs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端性能优化：JS函数防抖与节流</title>
+    <url>/2020/06/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/</url>
+    <content><![CDATA[<h2 id="函数防抖-debounce"><a href="#函数防抖-debounce" class="headerlink" title="函数防抖(debounce)"></a>函数防抖(debounce)</h2><p><strong>概念：</strong>事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。</p>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li><p>input 搜索联想且在不断输入时，可用防抖来节约请求资源</p>
+</li>
+<li><p>Window触发resize、浏览器滑动scroll时，不断的触发事件，用防抖来让其只触发一次</p>
+</li>
+</ul>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, ms = <span class="number">1000</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">    &#125;, ms)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+<h5 id="通俗的讲：函数防抖就像游戏中的蓄能技能，能量没蓄满再按键就会重新蓄能"><a href="#通俗的讲：函数防抖就像游戏中的蓄能技能，能量没蓄满再按键就会重新蓄能" class="headerlink" title="通俗的讲：函数防抖就像游戏中的蓄能技能，能量没蓄满再按键就会重新蓄能"></a>通俗的讲：函数防抖就像游戏中的蓄能技能，能量没蓄满再按键就会重新蓄能</h5><h2 id="函数节流-throttle"><a href="#函数节流-throttle" class="headerlink" title="函数节流(throttle)"></a>函数节流(throttle)</h2><p><strong>概念：</strong>规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。</p>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li>鼠标不断点击触发，mousedown在单位时间内只触发一次</li>
+</ul>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, ms = <span class="number">1000</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> canRun = <span class="literal">true</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!canRun) <span class="keyword">return</span></span><br><span class="line">    canRun = <span class="literal">false</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">      canRun = <span class="literal">true</span></span><br><span class="line">    &#125;, ms)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="通俗的讲：函数节流就像游戏里的攻速，就算一直按着鼠标，也只会在规定A出动作"><a href="#通俗的讲：函数节流就像游戏里的攻速，就算一直按着鼠标，也只会在规定A出动作" class="headerlink" title="通俗的讲：函数节流就像游戏里的攻速，就算一直按着鼠标，也只会在规定A出动作"></a>通俗的讲：函数节流就像游戏里的攻速，就算一直按着鼠标，也只会在规定A出动作</h5><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>函数防抖和函数节流都是防止某一时间频繁触发，但各自的原理不一样</li>
+<li>函数防抖是某一段时间内触发事件执行一次，再次触发则重新计时；而函数节流是触发后一段时间必定执行一次，无法被打断</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>理解JS中的reduce方法</title>
+    <url>/2020/05/30/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84reduce%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="reduce方法"><a href="#reduce方法" class="headerlink" title="reduce方法"></a>reduce方法</h2><p>reduce 方法对数组的每个元素执行提供的reducer函数，将结果汇为单个返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">arr.reduce(callback(accumulator, currentValue, index, array), initialValue)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>callback</strong> 执行数组中每个值的函数，包括四个参数。</li>
+</ul>
+<ol>
+<li><strong>accumulator</strong>回调<code>callback</code>方法执行后的返回值</li>
+<li><strong>currentValue</strong>数组中正在处理的当前值</li>
+<li><strong>index</strong>数组中正在处理的当前值的索引</li>
+<li><strong>array</strong>调用<code>reduce</code>方法的数组</li>
+</ol>
+<ul>
+<li><strong>initialValue</strong>设置的初始值（可选）</li>
+</ul>
+<p><strong>注意：</strong>若提供了初始值 <code>initialValue</code>，将作为第一次调用callback函数时的第一个参数 <code>accumulator</code> 的值，索引 <code>index</code>从0开始，迭代次数为 <code>arr.length</code>；若没有提供初始值<code>initialValue</code>，则把数组第一个值作为callback第一个参数的值，索引 <code>index</code>从1开始，迭代次数为 <code>arr.length - 1</code></p>
+<a id="more"></a> 
+
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li><strong>数组累加</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>].reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> acc + cur</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>对象属性和</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">x</span>: <span class="number">3</span>&#125;, &#123;<span class="attr">x</span>: <span class="number">5</span>&#125;, &#123;<span class="attr">x</span>: <span class="number">6</span>&#125;].reduce(<span class="function">(<span class="params">acc, current</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> acc + current.x</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Promise 队列</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> promiseFn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'resolve1'</span>)</span><br><span class="line">        resolve()</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> promiseFn2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'resolve2'</span>)</span><br><span class="line">        resolve()</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> promiseFn3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'resolve3'</span>)</span><br><span class="line">        resolve(<span class="string">'last resolve'</span>)</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> pro = [promiseFn, promiseFn2, promiseFn3].reduce(<span class="function">(<span class="params">p, f</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> p.then(f)</span><br><span class="line">  &#125;, <span class="built_in">Promise</span>.resolve()) <span class="comment">// 提供initialValue，从第一个参数遍历</span></span><br><span class="line">  pro.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>计算数组中每个元素出现的次数</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'alice'</span>, <span class="string">'Bob'</span>, <span class="string">'lee'</span>, <span class="string">'mark'</span>]</span><br><span class="line"><span class="keyword">let</span> nameNum = names.reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!acc[cur]) &#123;</span><br><span class="line">        acc[cur] = <span class="number">0</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        acc[cur]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">&#125;, &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>数组去重</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>].reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!acc.includes[cur]) &#123;</span><br><span class="line">    <span class="keyword">return</span> acc.concat(cur)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="comment">// 当然还可以使用new set </span></span><br><span class="line"><span class="comment">// Array.from 从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。</span></span><br><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(myArray))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>二维数组转行成一维数组</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [[<span class="string">'1'</span>, <span class="string">'2'</span>], [<span class="string">'3'</span>, <span class="string">'4'</span>]].reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> acc.concat(cur)</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浅谈JS数组去重</title>
+    <url>/2020/05/29/%E6%B5%85%E8%B0%88JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
+    <content><![CDATA[<h2 id="示例数组"><a href="#示例数组" class="headerlink" title="示例数组"></a>示例数组</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> baseArr = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">2</span>, <span class="literal">true</span>, <span class="string">'true'</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">null</span>, <span class="literal">null</span>, &#123;&#125;, &#123;&#125;, [], [], <span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="ES6-的-Set-去重"><a href="#ES6-的-Set-去重" class="headerlink" title="ES6 的 Set 去重"></a>ES6 的 Set 去重</h2><p>Set数据类似于数组，但是成员的值都是唯一的，没有重复的值。它可以接收一个数组，类于：let a=[1,2,3,1,2] Set(a)=&gt;1,2,3 所以可以使用Set()实现去重。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> resultArr = [ ...new <span class="built_in">Set</span>(baseArr) ]</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">const</span> resultArr = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(baseArr))</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(resultArr)  <span class="comment">// [1, "1", 2, true, "true", false, null, &#123;&#125;, &#123;&#125;, [], [], undefined, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p>Set内部判断两个值是否不同，使用的算法叫做“Same-value equality”，它类似于精确相 等运算符（ === ），主要的区别是 NaN 等于自身，而精确相等运算符认 为 NaN 不等于自身。 另外，两个对象总是不相等的。</p>
+ <a id="more"></a>
+
+<p><strong>优点：</strong>简洁方便，可以区分<code>NaN</code>；</p>
+<p><strong>缺点：</strong>无法识别相同对象和数组；</p>
+<p>简单的场景建议使用该方法进行去重</p>
+<h2 id="最基础的去重：双重遍历"><a href="#最基础的去重：双重遍历" class="headerlink" title="最基础的去重：双重遍历"></a>最基础的去重：双重遍历</h2><p>定义一个新数组，并存放原数组的第一个元素，然后将源数组一一和新数组的元素对比，若不同则存放在新数组中。</p>
+<h4 id="不处理数组中对象"><a href="#不处理数组中对象" class="headerlink" title="不处理数组中对象"></a>不处理数组中对象</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> resultArr = []</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> repeat = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> j = i+<span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (arr[i] === arr[j]) &#123;</span><br><span class="line">                    repeat = <span class="literal">true</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!repeat) &#123;</span><br><span class="line">                resultArr.push(arr[i])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> resultArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(baseArr))  <span class="comment">// [1, "1", 2, true, "true", false, null, &#123;&#125;, &#123;&#125;, [], [], undefined, NaN, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>缺点：</strong>无法识别相同对象和数组，还有<code>NaN</code>；</p>
+<h4 id="处理数组中对象"><a href="#处理数组中对象" class="headerlink" title="处理数组中对象"></a>处理数组中对象</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> resultArr = []</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> repeat = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> j = i+<span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">JSON</span>.stringify(arr[i]) === <span class="built_in">JSON</span>.stringify(arr[j])) &#123;</span><br><span class="line">                    repeat = <span class="literal">true</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!repeat) &#123;</span><br><span class="line">                resultArr.push(arr[i])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> resultArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(baseArr))  <span class="comment">// [1, "1", 2, true, "true", false, &#123;&#125;, [], undefined, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong>可以区分对象和数组；</p>
+<p><strong>缺点：</strong>代码较复杂，不能区分 <code>null</code>；</p>
+<h2 id="使用indexOf"><a href="#使用indexOf" class="headerlink" title="使用indexOf"></a>使用indexOf</h2><p>建立一个新的空数组，遍历源数组，往这个空数组里塞值，每次 push 之前，先判断是否已有相同的值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">let</span> resultArr = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (resultArr.indexOf(arr[i]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            resultArr.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(baseArr))  <span class="comment">// [1, "1", 2, true, "true", false, null, &#123;&#125;, &#123;&#125;, [], [], undefined, NaN, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：ES5中常用方法，兼容性高，易于理解</p>
+<p><strong>缺点：</strong>无法识别相同对象和数组，也不能区分 <code>NaN</code></p>
+<h2 id="使用-ES6-的-includes"><a href="#使用-ES6-的-includes" class="headerlink" title="使用 ES6 的 includes"></a>使用 ES6 的 includes</h2><p>和<code>indexOf</code>类似，但<code>inculdes</code>是ES2016新增API</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">let</span> resultArr = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!resultArr.includes(arr[i])) &#123;</span><br><span class="line">            resultArr.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(baseArr))  <span class="comment">// [1, "1", 2, true, "true", false, null, &#123;&#125;, &#123;&#125;, [], [], undefined, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：相对于 <code>indexOf</code>，可以区分 <code>NaN</code></p>
+<p><strong>缺点：</strong>无法识别相同对象和数组</p>
+<h2 id="利用reduce-includes"><a href="#利用reduce-includes" class="headerlink" title="利用reduce+includes"></a>利用reduce+includes</h2><p>两个高阶函数的巧妙使用</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">prev, cur</span>) =&gt;</span> prev.includes(cur) ? prev : [...prev, cur]</span><br><span class="line"><span class="keyword">const</span> resultArr = baseArr.reduce(reducer, [])</span><br><span class="line"><span class="built_in">console</span>.log(resultArr)  <span class="comment">// [1, "1", 2, true, "true", false, null, &#123;&#125;, &#123;&#125;, [], [], undefined, NaN]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点</strong>：代码极简，可以区分 <code>NaN</code></p>
+<p><strong>缺点：</strong>无法识别相同对象和数组</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用ES6的Set求数组的交集、并集、差集</title>
+    <url>/2020/05/28/%E4%BD%BF%E7%94%A8ES6%E7%9A%84Set%E6%B1%82%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%E3%80%81%E5%B9%B6%E9%9B%86%E3%80%81%E5%B7%AE%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>利用Set的 .has(value) 方法 ，判断值是否为 Set 的成员，并组合数组的 .filter()方法，返回新的数组。</p>
+<h2 id="简单的数组"><a href="#简单的数组" class="headerlink" title="简单的数组"></a>简单的数组</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 并集</span></span><br><span class="line"><span class="keyword">const</span> merge1 = [...arr1, ...arr2])]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集</span></span><br><span class="line"><span class="keyword">const</span> intersect = [...new <span class="built_in">Set</span>([...arr1].filter(<span class="function"><span class="params">item</span> =&gt;</span> arr2.has(item)))]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集</span></span><br><span class="line"><span class="keyword">const</span> diff = [...new <span class="built_in">Set</span>([...arr1].filter(<span class="function"><span class="params">item</span> =&gt;</span> !arr2.has(item)))]</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+
+
+<h2 id="带对象的数组"><a href="#带对象的数组" class="headerlink" title="带对象的数组"></a>带对象的数组</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [</span><br><span class="line">    &#123; <span class="attr">id</span>:<span class="number">1</span>, <span class="attr">a</span>:<span class="number">123</span>, <span class="attr">b</span>:<span class="number">1234</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>:<span class="number">2</span>, <span class="attr">a</span>:<span class="number">123</span>, <span class="attr">b</span>:<span class="number">1234</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>:<span class="number">3</span>, <span class="attr">a</span>:<span class="number">123</span>, <span class="attr">b</span>:<span class="number">1234</span> &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> arr2 = [</span><br><span class="line">    &#123; <span class="attr">id</span>:<span class="number">2</span>, <span class="attr">a</span>:<span class="number">123</span>, <span class="attr">b</span>:<span class="number">1234</span> &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集</span></span><br><span class="line"><span class="keyword">const</span> intersect = [...arr1].filter(<span class="function"><span class="params">item1</span> =&gt;</span> [...arr2].some(<span class="function"><span class="params">item2</span> =&gt;</span> item2.id === item1.id))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集</span></span><br><span class="line"><span class="keyword">const</span> diff = [...arr1].filter(<span class="function"><span class="params">item1</span> =&gt;</span> [...arr2].every(<span class="function"><span class="params">item2</span> =&gt;</span> item2.id !== item.id))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue利用Drag实现列表的拖拽排序</title>
     <url>/2020/05/27/Vue%E5%88%A9%E7%94%A8Drag%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h2 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h2><h4 id="draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动"><a href="#draggable：true，表示元素可以被拖动-false，表示元素不可以被拖动" class="headerlink" title="draggable：true，表示元素可以被拖动;  false，表示元素不可以被拖动"></a><strong>draggable：</strong>true，表示元素可以被拖动;  false，表示元素不可以被拖动</h4><h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><table>
